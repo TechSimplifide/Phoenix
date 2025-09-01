@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phoenix | Student Dashboard</title>
+    <link
+      rel="shortcut icon"
+      href="./src/LibraryLogo.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./student_dashboard.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <!-- top -->
+      <header class="topbar" role="banner">
+        <div class="logo">
+          <div class="icon"><img src="./src/LibraryLogo.png" alt="logo" /></div>
+          <div class="brand">Phoenix</div>
+        </div>
+
+        <div class="search" role="search">
+          <input
+            id="globalSearch"
+            type="search"
+            placeholder="Search books by title/author/subject"
+            aria-label="Search books"
+          />
+          <button id="searchBtn" class="btn secondary">Search</button>
+        </div>
+
+        <button id="logoutBtnTop" class="btn ghost" title="Logout">
+          Logout
+        </button>
+      </header>
+
+      <!-- side -->
+      <aside class="sidebar" aria-label="Sidebar navigation">
+        <nav class="nav" id="sideNav">
+          <a href="#dashboard" data-route="dashboard" class="active"
+            ><img
+              src="./src/home-button.png"
+              style="height: 20px"
+              alt="dashboard"
+            />
+            Dashboard</a
+          >
+          <a href="#catalog" data-route="catalog"
+            ><img src="./src/book.png" style="height: 20px" alt="book-catlog" />
+            Catalog</a
+          >
+          <a href="#loans" data-route="loans"
+            ><img
+              src="./src/received.png"
+              style="height: 20px"
+              alt="received-book"
+            />My Loans</a
+          >
+          <a href="#history" data-route="history"
+            ><img
+              src="./src/history.png"
+              style="height: 20px"
+              alt="user-history"
+            />History</a
+          >
+          <a href="#fines" data-route="fines"
+            ><img
+              src="./src/fine.png"
+              style="height: 20px"
+              alt="book's-files"
+            />Fines</a
+          >
+          <a href="#profile" data-route="profile"
+            ><img
+              src="./src/user.png"
+              style="height: 20px"
+              alt="user-profile"
+            />
+            Profile</a
+          >
+        </nav>
+      </aside>
+
+      <!-- main -->
+      <main class="main" id="app" role="main" aria-live="polite"></main>
+    </div>
+
+    <!-- modal & toast -->
+    <div class="modal-backdrop" id="modal">
+      <div class="modal" role="dialog" aria-modal="true">
+        <h3 id="modalTitle">Confirm</h3>
+        <div id="modalBody"></div>
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 12px;
+          "
+        >
+          <button id="modalCancel" class="btn secondary">Cancel</button
+          ><button id="modalOk" class="btn">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <script src="./student_dashboard.js"></script>
+  </body>
+</html>

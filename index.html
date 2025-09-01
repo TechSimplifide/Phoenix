@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phoenix Library Management</title>
+    <link rel="shortcut icon" href="./src/LibraryLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./home.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <img src="./src/LibraryLogo.png" alt="Phoenix Logo" />
+          <h2>Phoenix</h2>
+        </div>
+
+        <!-- Hamburger Icon -->
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" class="nav-btn">Home</a></li>
+          <li><a href="#features" class="nav-btn">Features</a></li>
+          <li><a href="#about" class="nav-btn">About Us</a></li>
+          <li><a href="#faqs" class="nav-btn">FAQs</a></li>
+          <li>
+            <a href="./register.html" class="nav-btn register">Register</a>
+          </li>
+          <li><a href="./login.html" class="nav-btn login">Login</a></li>
+        </ul>
+      </nav>
+    </header> 
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Reinventing Library Management with Phoenix</h1>
+        <p>
+          Modern, fast, and reliable system to manage your library seamlessly.
+          Built for colleges, schools, and institutions.
+        </p>
+        <div class="hero-buttons">
+          <a href="./register.html" class="btn-primary">Get Started</a>
+          <a href="#features" class="btn-secondary">Explore Features</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="features">
+      <h2>Our Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <img src="./src//book.png" alt="book Catalog">
+          <h3>Smart Book Catalog</h3>
+          <p>
+            Organize and search books efficiently with advanced catalog
+            features.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img src="./src/user.png" alt="member image">
+          <h3>Member Management</h3>
+          <p>
+            Track students, faculty, and visitors with a powerful member system.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img src="./src/dashboard.png" alt="data-analytics img">
+          <h3>Reports & Analytics</h3>
+          <p>Get detailed insights into book usage and user activity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY PHOENIX -->
+    <section id="about" class="why">
+      <h2>Why Phoenix?</h2>
+      <div class="why-grid">
+        <div class="why-card">⚡ Modern & Fast</div>
+        <div class="why-card">🔒 Secure & Reliable</div>
+        <div class="why-card">👌 Easy to Use</div>
+      </div>
+      <p class="section-note">
+        Built with best practices for performance, accessibility, and a
+        delightful user experience.
+      </p>
+    </section>
+
+    <!-- FAQS -->
+    <section id="faqs" class="section">
+      <h2 class="section-title">FAQs</h2>
+      <div class="faq">
+        <details>
+          <summary>What is Phoenix Library System?</summary>
+          <p>
+            Phoenix is a modern Library Management System that helps you manage
+            books, users, and records efficiently with a professional UI.
+          </p>
+        </details>
+        <details>
+          <summary>How can I register as a new member?</summary>
+          <p>
+            Click the "Register" button in the navigation and fill out the form.
+            Once verified, you can borrow and reserve books.
+          </p>
+        </details>
+        <details>
+          <summary>What happens if I return a book late?</summary>
+          <p>
+            A small late fee will apply per day after the due date. You'll be
+            notified by email and SMS reminders.
+          </p>
+        </details>
+        <details>
+          <summary>Is there a mobile view for students?</summary>
+          <p>
+            Yes, the UI is fully responsive and optimized for phones and
+            tablets.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <img src="./src/LibraryLogo.png" alt="Phoenix Logo" class="footer-logo" />
+        <p>&copy; 2025 Phoenix Library Management. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="#faqs">FAQs</a>
+        </div>
+      </div>
+    </footer>
+    <script src="./home.js"></script>
+  </body>
+</html>

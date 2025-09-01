@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0a192f, #112240, #ff6b00);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  scroll-behavior: smooth;
+}
+/*  */
+body.page-exit {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+/*  */
+.register-container {
+  background: #0a192f;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Logo */
+.logo {
+  width: 85px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 6px rgba(255, 107, 0, 0.7));
+  transform: scale(1.05);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #ff6b00;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 12px 45px 12px 14px;
+  border: 2px solid #112240;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #112240;
+  color: #fff;
+  transition: border 0.3s;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #ff6b00;
+  background: #0f1d36;
+  outline: none;
+  box-shadow: 0 0 6px rgba(255, 107, 0, 0.6);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+/* Password toggle icon hover effect */
+.password-toggle:hover {
+  filter: drop-shadow(0 0 6px rgba(255, 107, 0, 0.9))
+    drop-shadow(0 0 12px rgba(255, 140, 66, 0.7));
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #ff6b00;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s, box-shadow 0.2s;
+  margin-top: 8px;
+}
+
+button:hover {
+  background: #e65c00;
+  box-shadow: 0 0 6px 2px rgba(255, 107, 0, 0.6);
+  border: 0.6px solid #ffffffc7;
+}
+
+.login-link {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #ff6b00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    padding: 1.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  input,
+  button {
+    font-size: 14px;
+  }
+}
+
+/* Custom Scrollbar (for modern browsers) */
+::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #0a192f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #ff6a00d6,
+    #ff9500ab
+  ); /* Orange gradient */
+  border-radius: 8px; /* Rounded scrollbar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff9500, #ff6b00); /* Hover effect */
+}
