@@ -422,3 +422,21 @@ td {
 .mb8 {
   margin-bottom: 8px;
 }
+
+/* Custom Scrollbar (for modern browsers) */
+::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #0a192f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff6a00, #ff9500e1); /* Orange gradient */
+  border-radius: 8px; /* Rounded scrollbar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff9500, #ff6b00); /* Hover effect */
+}
