@@ -129,6 +129,64 @@ button:hover {
   }
 }
 
+/* ===== Custom Message Box ===== */
+.message-box {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #112240;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 330px;
+  width: auto;
+  z-index: 9999;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+  border-left: 6px solid transparent;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.message-box.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Success style (orange accent) */
+.message-box.success {
+  border-left-color: #ff6b00;
+}
+
+/* Error style (dark orange/red) */
+.message-box.error {
+  border-left-color: #d84315;
+  color: #cd4848;
+  font-weight: 600;
+}
+
+/* Close button */
+#closeMessage {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  width: 32px;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#closeMessage:hover {
+  color: #ff6b00;
+}
+
 /* Custom Scrollbar (for modern browsers) */
 ::-webkit-scrollbar {
   width: 8px; /* Scrollbar width */

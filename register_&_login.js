@@ -1,68 +1,3 @@
-// // ========== PASSWORD TOGGLE FUNCTION ==========
-// const setupPasswordToggle = (inputId, toggleId) => {
-//   const input = document.getElementById(inputId);
-//   const toggle = document.getElementById(toggleId);
-
-// const { use } = require("react");
-
-//   if (input && toggle) {
-//     toggle.addEventListener("click", () => {
-//       const isPassword = input.type === "password";
-//       input.type = isPassword ? "text" : "password";
-//       toggle.src = isPassword ? "./src/eye-open.png" : "./src/eye-closed.png";
-//     });
-//   }
-// };
-
-// // Register page (password + confirm)
-// setupPasswordToggle("password", "togglePass");
-// setupPasswordToggle("confirmPassword", "toggleConfirm");
-
-// // Login page (only password)
-// setupPasswordToggle("loginPassword", "toggleLoginPass");
-
-// // ========== REGISTER FORM VALIDATION ==========
-// const registerForm = document.getElementById("registerForm");
-// if (registerForm) {
-//   registerForm.addEventListener("submit", (e) => {
-//     e.preventDefault();
-
-//     const password = document.getElementById("password").value.trim();
-//     const confirmPassword = document
-//       .getElementById("confirmPassword")
-//       .value.trim();
-
-//     if (password !== confirmPassword) {
-//       alert("Passwords do not match!");
-//       return;
-//     }
-//     if (password.length < 8) {
-//       alert("Password must be at least 8 characters!");
-//       return;
-//     }
-
-//     alert("Registration successful!");
-//     // TODO: send data to backend
-//   });
-// }
-
-// // ========== LOGIN FORM VALIDATION (optional) ==========
-// const loginForm = document.getElementById("loginForm");
-// if (loginForm) {
-//   loginForm.addEventListener("submit", (e) => {
-//     e.preventDefault();
-
-//     const password = document.getElementById("loginPassword").value.trim();
-//     if (password.length < 8) {
-//       alert("Password must be at least 8 characters!");
-//       return;
-//     }
-
-//     alert("Login successful!");
-//     // TODO: send data to backend
-//   });
-// }
-
 // ========== PASSWORD TOGGLE ==========
 const setupPasswordToggle = (inputId, toggleId) => {
   const input = document.getElementById(inputId);
@@ -84,6 +19,24 @@ setupPasswordToggle("confirmPassword", "toggleConfirm");
 // Login page
 setupPasswordToggle("loginPassword", "toggleLoginPass");
 
+function showMessage(message, type = "success", duration = 3000) {
+  const box = document.getElementById("customMessageBox");
+  const text = document.getElementById("messageText");
+  const closeBtn = document.getElementById("closeMessage");
+
+  text.textContent = message;
+  box.className = `message-box ${type} show`;
+
+  const timeoutId = setTimeout(() => {
+    box.classList.remove("show");
+  }, duration);
+
+  closeBtn.onclick = () => {
+    box.classList.remove("show");
+    clearTimeout(timeoutId);
+  };
+}
+
 // ========== REGISTER FORM ==========
 const registerForm = document.getElementById("registerForm");
 if (registerForm) {
@@ -98,15 +51,15 @@ if (registerForm) {
       .value.trim();
 
     if (!name || !email || !password || !confirmPassword) {
-      alert("Please fill all fields!");
+      showMessage("Please fill all fields!", "error");
       return;
     }
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      showMessage("Passwords do not match!", "error");
       return;
     }
     if (password.length < 8) {
-      alert("Password must be at least 8 characters!");
+      showMessage("Password must be at least 8 characters!", "error");
       return;
     }
 
@@ -123,15 +76,17 @@ if (registerForm) {
       const data = await res.json();
 
       if (res.ok) {
-        alert("Registration successful!");
+        showMessage("Registration successful!", "success");
         registerForm.reset();
-        window.location.href = "./login.html"; // redirect to login
+        setTimeout(() => {
+          window.location.href = "./login.html"; // redirect to login
+        }, 1500);
       } else {
-        alert(data.message || "Registration failed!");
+        showMessage(data.message || "Registration failed!", "error");
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong!");
+      showMessage("Something went wrong. Please try again later.", "error");
     }
   });
 }
@@ -146,7 +101,7 @@ if (loginForm) {
     const password = document.getElementById("loginPassword").value.trim();
 
     if (!email || !password) {
-      alert("Please fill all fields!");
+      showMessage("Please fill all fields!", "error");
       return;
     }
 
@@ -162,16 +117,8 @@ if (loginForm) {
 
       const data = await res.json();
 
-      // if (res.ok) {
-      //   alert("Login successful!");
-      //   localStorage.setItem("token", data.token); // save JWT token
-      //   window.location.href = "./dashboard.html"; // redirect to dashboard
-      // } else {
-      //   alert(data.message || "Login failed!");
-      // }
-
       if (res.ok) {
-        alert("Login successful!");
+        showMessage("Login successful!", "success");
         const { token, user } = data;
         localStorage.setItem("token", token);
         localStorage.setItem("userRole", user.role); // save role
@@ -179,16 +126,20 @@ if (loginForm) {
 
         // Redirect based on role
         if (user.role === "admin") {
-          window.location.href = "./admin-dashboard.html";
+          setTimeout(() => {
+            window.location.href = "./admin-dashboard.html";
+          }, 1500);
         } else if (user.role === "student") {
-          window.location.href = "./student-dashboard.html";
-        } else {
-          alert(data.message || "Login failed!");
+          setTimeout(() => {
+            window.location.href = "./student-dashboard.html";
+          }, 1500);
         }
+      } else {
+        showMessage(data.message || "Unknown role. Contact support.", "error");
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong!");
+      showMessage("Server error. Please try again later.", "error");
     }
   });
 }
