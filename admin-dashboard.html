@@ -1,70 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin | Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phoenix • Admin Dashboard</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-        scroll-behavior: smooth;
-      }
-
-      :root {
-        --primary-color: #ff6b00;
-        --secondary-color: #ff2d55;
-        --dark-blue: #0a192f;
-        --light-blue: #112240;
-        --text-color: #ffffff;
-        --muted-text: #b3b3b3;
-        --card-bg: rgba(255, 255, 255, 0.05);
-      }
-
-      body {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0 6%;
-        background: linear-gradient(
-          135deg,
-          #0a192f 0%,
-          #112240 50%,
-          #ff6b00 100%
-        );
-        /* background: radial-gradient(circle at top left, #0a192f, #020c1b); */
-        position: relative;
-        overflow: hidden;
-      }
-
-      h2 {
-        font-family: "Poppins", sans-serif;
-        font-size: 1.7rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #ff6a00, #ff8c42, #ff3c00);
-        -webkit-background-clip: text;
-        color: transparent;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 0.3s ease, text-shadow 0.3s ease;
-      }
-
-      p{
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="./admin_dashboard.css" />
   </head>
   <body>
-    <h2>Admin Dashboard</h2>
-    <p>work in progress...</p>
+    <div class="shell" role="application">
+      <!-- top -->
+      <header class="topbar" role="banner">
+        <div class="logo">
+          <div class="brandMark" aria-hidden="true">
+            <img src="./src/LibraryLogo.png" alt="logo" />
+          </div>
+          <div class="brand">Phoenix Admin</div>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            gap: 8px;
+            margin-left: auto;
+            align-items: center;
+          "
+        >
+          <button id="logoutBtn" class="btn ghost" title="Logout">
+            Logout
+          </button>
+        </div>
+      </header>
+
+      <!-- sidebar -->
+      <aside class="sidebar" id="sidebar" aria-label="Sidebar navigation">
+        <nav class="nav" id="sideNav">
+          <a href="#" data-route="dashboard" class="active"
+            ><img src="./src/home-button.png" alt="dashboard" />Dashboard</a
+          >
+          <a href="#" data-route="books"
+            ><img src="./src/book.png" alt="books" />Books</a
+          >
+          <a href="#" data-route="users"
+            ><img src="./src/group.png" alt="users" />Users</a
+          >
+          <a href="#" data-route="borrow"
+            ><img src="./src/history.png" alt="borrow" />Borrows</a
+          >
+          <a href="#" data-route="profile"
+            ><img src="./src/user.png" alt="profile" />Profile</a
+          >
+        </nav>
+      </aside>
+
+      <!-- main -->
+      <main class="main" id="main" role="main" aria-live="polite">
+        <div class="pageHeader">
+          <h1 id="pageTitle" class="pageTitle">Dashboard</h1>
+        </div>
+
+        <!-- Dashboard (no recent activity) -->
+        <section id="dashboard" class="section" aria-labelledby="pageTitle">
+          <div class="kpis">
+            <div class="card">
+              <div class="title">Total Books Quantity</div>
+              <div class="value" id="k_totalBooks">0</div>
+            </div>
+            <div class="card">
+              <div class="title">Total Users</div>
+              <div class="value" id="k_totalUsers">0</div>
+            </div>
+            <div class="card">
+              <div class="title">Active Borrows</div>
+              <div class="value" id="k_totalBorrows">0</div>
+            </div>
+            <div class="card">
+              <div class="title">Estimated Fines (₹)</div>
+              <div class="value" id="k_totalFines">0</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Books -->
+        <section id="books" class="section" style="display: none">
+          <div class="tools">
+            <!-- <h2 style="margin: 0">Books</h2> -->
+            <div class="right">
+              <select id="bookFilter" aria-label="Filter books">
+                <option style="background-color: #0a192ff2" value="ALL">
+                  All
+                </option>
+                <option style="background-color: #0a192ff2" value="AVAILABLE">
+                  Available
+                </option>
+                <option style="background-color: #0a192ff2" value="OUT">
+                  Out
+                </option>
+              </select>
+              <input id="booksSearch" placeholder="Search books..." />
+              <button id="openAddBook" class="btn">Add Book</button>
+            </div>
+          </div>
+
+          <div class="tableWrap">
+            <table id="booksTable" aria-label="Books table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Subject</th>
+                  <th>Qty</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Users (Admins + Students, Create Admin inside here) -->
+        <section id="users" class="section" style="display: none">
+          <div class="tools">
+            <!-- <h2 style="margin: 0">Users</h2> -->
+            <div class="right">
+              <input id="usersSearch" placeholder="Search users..." />
+              <button id="openCreateAdmin" class="btn">Create Admin</button>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 16px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 300px">
+              <h3 style="margin: 6px 0; color: var(--orange)">Admins</h3>
+              <table id="adminsTable" aria-label="Admins">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div style="flex: 1; min-width: 300px">
+              <h3 style="margin: 6px 0; color: var(--orange)">Students</h3>
+              <table id="studentsTable" aria-label="Students">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Borrows -->
+        <section id="borrow" class="section" style="display: none">
+          <div class="tools">
+            <!-- <h2 style="margin: 0">Borrow Records</h2> -->
+            <div class="right">
+              <input id="borrowSearch" placeholder="Search borrows..." />
+            </div>
+          </div>
+
+          <div class="tableWrap">
+            <table id="borrowTable" aria-label="Borrow table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Book</th>
+                  <th>Issued</th>
+                  <th>Due</th>
+                  <th>Return</th>
+                  <th>Status</th>
+                  <th>Fine</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Profile -->
+        <section id="profile" class="section" style="display: none">
+          <!-- <h2>Profile</h2> -->
+          <div class="card" style="max-width: 420px">
+            <p><strong>Name:</strong> <span id="pname">-</span></p>
+            <p><strong>Email:</strong> <span id="pemail">-</span></p>
+            <p><strong>Role:</strong> <span id="prole">-</span></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- overlay & confirm -->
+    <div id="overlay" class="overlay" aria-hidden="true">
+      <div id="confirmModal" class="modal" style="display: none">
+        <div id="confirmBody"></div>
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 12px;
+          "
+        >
+          <button id="confirmCancel" class="btn secondary">Cancel</button>
+          <button id="confirmOk" class="btn">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add / Edit Book popup -->
+    <div
+      id="bookPopup"
+      class="modal slide-popup"
+      role="dialog"
+      aria-modal="true"
+      style="
+        display: none;
+        right: 18px;
+        bottom: 18px;
+        position: fixed;
+        z-index: 80;
+        max-width: 420px;
+      "
+    >
+      <h3 style="margin: 0 0 8px 0; color: var(--orange)">Add / Edit Book</h3>
+      <form id="bookForm" class="form" onsubmit="return false">
+        <input id="b_title" placeholder="Title" required />
+        <input id="b_author" placeholder="Author" required />
+        <input id="b_subject" placeholder="Subject" required />
+        <input
+          id="b_quantity"
+          type="number"
+          min="0"
+          placeholder="Quantity"
+          required
+        />
+        <div style="display: flex; gap: 8px; justify-content: flex-end">
+          <button id="bookCancel" class="btn secondary" type="button">
+            Cancel
+          </button>
+          <button id="bookSave" class="btn" type="button">Save</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Create Admin popup -->
+    <div
+      id="adminPopup"
+      class="modal slide-popup"
+      role="dialog"
+      aria-modal="true"
+      style="
+        display: none;
+        right: 18px;
+        bottom: 18px;
+        position: fixed;
+        z-index: 80;
+        max-width: 420px;
+      "
+    >
+      <h3 style="margin: 0 0 8px 0; color: var(--orange)">Create Admin</h3>
+      <form id="adminForm" class="form" onsubmit="return false">
+        <input id="a_name" placeholder="Name" required />
+        <input id="a_email" type="email" placeholder="Email" required />
+        <input
+          id="a_password"
+          type="password"
+          placeholder="Password"
+          required
+        />
+        <div style="display: flex; gap: 8px; justify-content: flex-end">
+          <button id="adminCancel" class="btn secondary" type="button">
+            Cancel
+          </button>
+          <button id="adminSave" class="btn" type="button">Create</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- bottom nav for mobile -->
+    <nav id="bottomNav" class="bottom-nav" aria-label="Mobile navigation">
+      <button class="bn-btn" data-route="dashboard">
+        <img src="./src/home-button.png" alt="dashboard" /><span
+          >Dashboard</span
+        >
+      </button>
+      <button class="bn-btn" data-route="books">
+        <img src="./src/book.png" alt="books" /><span>books</span>
+      </button>
+      <button class="bn-btn" data-route="users">
+        <img src="./src/group.png" alt="users" /><span>Users</span>
+      </button>
+      <button class="bn-btn" data-route="borrow">
+        <img src="./src/history.png" alt="borrow" /><span>Borrows</span>
+      </button>
+      <button class="bn-btn" data-route="profile">
+        <img src="./src/user.png" alt="profile" /><span>Profile</span>
+      </button>
+    </nav>
+
+    <!-- toasts -->
+    <div class="toast-wrap" id="toasts" aria-live="polite"></div>
+
+    <script src="./admin-dashboard.js"></script>
   </body>
 </html>
