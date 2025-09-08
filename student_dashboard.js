@@ -1,6 +1,10 @@
 /* ================= CONFIG ================= */
 const API = "https://library-management-b0nw.onrender.com/api";
 const token = localStorage.getItem("token") || null; // if you store JWT after login
+if (!token) {
+  // No token = force login
+  window.location.href = "login.html";
+}
 const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
 
 const DAY = 24 * 60 * 60 * 1000;
