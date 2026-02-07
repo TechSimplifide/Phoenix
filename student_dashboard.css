@@ -17,7 +17,19 @@ body {
   font-family: Poppins, system-ui, Arial, sans-serif;
   background: var(--navy);
   color: #fff;
+  /*  */
+  min-width: 0;
 }
+/*  */
+.shell,
+.main,
+.section,
+.grid,
+.kpis {
+  max-width: 100%;
+}
+/*  */
+
 /* layout */
 .shell {
   display: grid;
@@ -148,6 +160,8 @@ body {
   padding: 16px;
   border: 1px solid var(--border);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  /*  */
+   overflow: hidden; 
 }
 .card:hover {
   box-shadow: 0 12px 28px rgba(255, 107, 0, 0.25);
@@ -373,6 +387,9 @@ td {
   #logoutBtnTop{
     display: none;
   }
+  .search{
+    display: none;
+  }
 }
 @media (max-width: 800px) {
   .shell {
@@ -425,6 +442,15 @@ td {
 .mb8 {
   margin-bottom: 8px;
 }
+/*  */
+@media (max-width: 480px) {
+  body {
+    position: relative;
+    overflow-x: hidden;
+  }
+}
+/*  */
+
 
 /* Custom Scrollbar (for modern browsers) */
 ::-webkit-scrollbar {
