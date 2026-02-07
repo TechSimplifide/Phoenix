@@ -368,7 +368,7 @@ td {
 /* new added */
 @media (max-width: 900px) {
   .kpis {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 @media (max-width: 800px) {
