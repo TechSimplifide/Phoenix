@@ -350,8 +350,8 @@ td {
   font-size: 11px;
 }
   .chip {
-  font-size: 0.55rem;
-  padding: 2px 4px;
+  font-size: 0.40rem;
+  padding: 1.5px 3px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
