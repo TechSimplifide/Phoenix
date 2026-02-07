@@ -349,36 +349,49 @@ td {
 /* ===================================  */
 
 /* ======== HIstory Tab====================== */
-  .table-wrap {
+ .history-table {
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.history-table {
-  width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
-  min-width: 520px; /* keeps columns readable */
+  font-size: 0.75rem;
 }
 
-@media (max-width: 768px) {
+.history-table th,
+.history-table td {
+  padding: 6px;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Book column */
+.history-table td:first-child {
+  max-width: 110px;
+}
+
+/* Status chip */
+.history-table .chip {
+  font-size: 0.65rem;
+  padding: 3px 6px;
+  border-radius: 8px;
+}
+
+/* Extra-tight for small phones */
+@media (max-width: 600px) {
   .history-table {
-    font-size: 0.78rem;
-  }
-
-  .history-table th,
-  .history-table td {
-    padding: 6px 8px;
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 768px) {
-  .chip {
     font-size: 0.7rem;
-    padding: 3px 6px;
+  }
+
+  .history-table th {
+    font-size: 0.68rem;
+  }
+
+  .history-table td:first-child {
+    max-width: 95px;
   }
 }
+
 
 
 /* ======================================= */
