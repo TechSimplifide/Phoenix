@@ -348,43 +348,6 @@ td {
 
 /* ===================================  */
 
-/* ===== History tab mobile fix ===== */
-
-.history-table {
-  width: 100%;
-  table-layout: fixed;      /* forces fit */
-  border-collapse: collapse;
-  font-size: 0.7rem;        /* small text like screenshot */
-}
-
-.history-table th,
-.history-table td {
-  padding: 6px 4px;
-  word-break: break-word;  /* wrap text */
-  overflow-wrap: break-word;
-  text-align: left;
-}
-
-/* Book name column */
-.history-table td:first-child {
-  max-width: 90px;
-}
-
-/* Status chip smaller */
-.history-table .chip {
-  font-size: 0.6rem;
-  padding: 3px 6px;
-}
-
-/* Extra small phones */
-@media (max-width: 480px) {
-  .history-table {
-    font-size: 0.65rem;
-  }
-}
-
-
-/* ======================================= */
 /* ===========================
          Mobile bottom tabs styling
          =========================== */
