@@ -388,9 +388,9 @@ td {
   #logoutBtnTop{
     display: none;
   }
-  .search{
+  /* .search{
     display: none;
-  }
+  } */
 }
 @media (max-width: 800px) {
   .shell {
