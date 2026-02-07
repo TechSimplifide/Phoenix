@@ -18,6 +18,7 @@ body {
   background: var(--navy);
   color: #fff;
   /*  */
+   overflow-y: auto;
   min-width: 0;
 }
 /*  */
@@ -36,7 +37,8 @@ body {
   grid-template-columns: 260px 1fr;
   grid-template-rows: 64px 1fr;
   grid-template-areas: "top top" "side main";
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  min-height: auto;
 }
 .topbar {
   grid-area: top;
