@@ -346,8 +346,42 @@ td {
   }
 }
 
-
 /* ===================================  */
+
+/* ======== HIstory Tab====================== */
+  .table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px; /* keeps columns readable */
+}
+
+@media (max-width: 768px) {
+  .history-table {
+    font-size: 0.78rem;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 6px 8px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .chip {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+}
+
+
+/* ======================================= */
 /* ===========================
          Mobile bottom tabs styling
          =========================== */
