@@ -17,8 +17,6 @@ body {
   font-family: Poppins, system-ui, Arial, sans-serif;
   background: var(--navy);
   color: #fff;
-  overflow-x: hidden;
-
 }
 /* layout */
 .shell {
@@ -26,7 +24,7 @@ body {
   grid-template-columns: 260px 1fr;
   grid-template-rows: 64px 1fr;
   grid-template-areas: "top top" "side main";
-  min-height: 100dvh;
+  min-height: 100vh;
 }
 .topbar {
   grid-area: top;
@@ -65,8 +63,7 @@ body {
   align-items: center;
 }
 .search input {
-  width: 100%;
-  max-width: 240px;
+  min-width: 240px;
   padding: 9px 12px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -137,14 +134,6 @@ body {
 .main {
   grid-area: main;
   padding: 20px;
-}
-@media (max-width: 1024px) {
-  .shell {
-    grid-template-columns: 1fr;
-  }
-  .sidebar {
-    display: none;
-  }
 }
 
 /* Cards & sections */
@@ -250,11 +239,6 @@ body {
 .book h4 {
   margin: 0;
 }
-.table-wrap {
-  overflow-x: auto;
-  width: 100%;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -377,9 +361,9 @@ td {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .kpis {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  /* .kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  } */
 }
 /* new added */
 @media (max-width: 900px) {
