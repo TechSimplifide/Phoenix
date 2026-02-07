@@ -370,6 +370,9 @@ td {
   .kpis {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+  #logoutBtnTop{
+    display: none;
+  }
 }
 @media (max-width: 800px) {
   .shell {
