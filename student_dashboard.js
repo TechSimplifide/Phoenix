@@ -339,7 +339,8 @@ const renderProfile = () => {
     <section class="section">
       <h2>Profile</h2>
       <div class="card">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        // <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="profile-grid"> 
           <div><div class="title">Name</div><div class="value">${
             p.name || "-"
           }</div></div>
