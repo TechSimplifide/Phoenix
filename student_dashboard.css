@@ -322,6 +322,32 @@ td {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
+/* ========================Profile ============================ */
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Mobile fix */
+@media (max-width: 600px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .email {
+    word-break: break-all;
+  }
+
+  .logout-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+
+/* ===================================  */
 /* ===========================
          Mobile bottom tabs styling
          =========================== */
