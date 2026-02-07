@@ -267,8 +267,7 @@ const renderHistory = () => {
     <section class="section">
       <h2>Transaction History</h2>
       <div class="card">
-      <div class="table-wrap">
-        <table aria-label="History" class="History-table">
+        <table aria-label="History">
           <thead><tr><th>Book</th><th>Status</th><th>Issue Date</th><th>Due Date</th><th>Return Date</th></tr></thead>
           <tbody>
             ${
@@ -294,7 +293,6 @@ const renderHistory = () => {
             }
           </tbody>
         </table>
-      </div>
       </div>
     </section>
   `;
