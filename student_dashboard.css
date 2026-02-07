@@ -265,10 +265,10 @@ thead {
 }
 th,
 td {
-  padding: 5px;
+  padding: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   text-align: left;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .activity {
@@ -344,6 +344,17 @@ td {
     width: 100%;
     margin-top: 8px;
   }
+  th,
+td {
+  padding: 5px;
+  font-size: 11px;
+}
+  .chip {
+  font-size: 0.55rem;
+  padding: 2px 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
 }
 
 /* ===================================  */
